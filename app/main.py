@@ -3,6 +3,7 @@ from fastapi.params import Body
 from pydantic import BaseModel
 from typing import Optional
 from random import randrange
+import app.pg_db_utils as pgutils
 
 app = FastAPI()
 
@@ -12,9 +13,7 @@ app = FastAPI()
 class Post(BaseModel):
     title: str
     content: str
-    # id: int
     published: bool = True
-    rating: Optional[int] = None
 
 
 my_posts = [
