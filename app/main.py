@@ -20,7 +20,7 @@ class Post(BaseModel):
 my_posts = [
     {"title": "title of first post", "content": "content of first post", "id": 1},
     {"title": "favorite food", "content": "I love pounded yam", "id": 2},
-    {"title": "Football", "content": "My favourite club is Manchester united", "id": 3},
+    {"title": "Football", "content": "My favourite club is Manchester united", "id": 3}
 ]
 
 
@@ -83,7 +83,7 @@ def get_post(id: int, response: Response):
     if not post:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"Post with id of {id} not found",
+            detail=f"Post with id of {id} not found"
         )
         # response.status_code = status.HTTP_404_NOT_FOUND
         # return{"postDetail": f"Post with id of {id} not found"}
@@ -98,7 +98,7 @@ def delete_post(id: int):
     if index == None:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"post with id {id} not found, please enter a valid id",
+            detail=f"post with id {id} not found, please enter a valid id"
         )
 
     my_posts.pop(index)
@@ -113,7 +113,7 @@ def update_post(id: int, post: Post):
     if index == None:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"post with id {id} not found, please enter a valid id",
+            detail=f"post with id {id} not found, please enter a valid id"
         )
     # convert post data input to a python dictionary
     post_dict = post.model_dump()
