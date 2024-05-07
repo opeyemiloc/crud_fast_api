@@ -18,17 +18,22 @@ def _get_pg_creds():
 
 
 def start_pg_connection():
-    creds = _get_pg_creds()
 
-    connection = psycopg2.connect(
-        host=creds["DB_HOST"],
-        port=creds["DB_PORT"],
-        dbname=creds["DB_NAME"],
-        user=creds["DB_USER"],
-        password=creds["DB_PASSWORD"],
-    )
+    try:
+            creds = _get_pg_creds()
 
-    return connection
+            connection = psycopg2.connect(
+            host=creds["DB_HOST"],
+            port=creds["DB_PORT"],
+            dbname=creds["DB_NAME"],
+            user=creds["DB_USER"],
+            password=creds["DB_PASSWORD"])
+            
+            return connection
+    except Exception as error:
+         print("connection to database failed")
+         print("Error : ", error)
+
 
 def query_db(connection,query_str):
     conn = connection
